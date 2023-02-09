@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { NavLink } from "react-router-dom";
 
 
-export class NavigationBar extends Component {
-  render() {
+const NavigationBar = () =>  {
     return (
         <div>
             <NavLink
@@ -26,7 +25,6 @@ export class NavigationBar extends Component {
         </div>
        
      )
-  }
 }
 
 export default NavigationBar
