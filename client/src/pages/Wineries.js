@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Wineries = () => {
+const Wineries = (wineries) => {
   return (
     <div>Wineries</div>
   )
