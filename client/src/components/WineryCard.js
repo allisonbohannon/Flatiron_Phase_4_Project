@@ -1,10 +1,11 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom';
 
 const WineryCard = ({winery}) => {
    
-    const {name, appellation, comments, visits } = winery
+    const {id, name, appellation, comments, visits } = winery
 
     const visitsArr = []
 
@@ -25,7 +26,7 @@ const WineryCard = ({winery}) => {
   return (
     <Card style={{ margin: '2rem', padding: '1em', width:"24rem"}} cols={2}
             >
-        <Card.Title onClick={handleClick} >{name}</Card.Title>
+        <Link to={`/wineries/${id}`}>{name}</Link>
         <Card.Body onClick={handleClick} >
             <Card.Subtitle>Appellation: {appellation}</Card.Subtitle>
             <Card.Text>Comments: {comments.length}</Card.Text>

@@ -4,14 +4,10 @@ import NavigationBar from "./NavigationBar";
 import Home from "../pages/Home";
 import Wineries from "../pages/Wineries";
 import Users from "../pages/Users";
+import WineryDetail from "../pages/WineryDetail";
 
 function App() {
 
-  
-  const wineryLightTest = [{id: 1, name: "winery1", appellation: "Napa"},
-                            {id: 2, name: "winery2", appellation: "Sonoma"}, 
-                            {id: 3, name: "winery3", appellation: "Lodi"}
-                          ]
   
   const wineryTest = [{id: 1, name: "winery1", appellation: "Napa", 
                               comments:[{id:1, userId:1, text: "xyz"}, {id:2, userId:3, text: "abc"}], 
@@ -38,8 +34,13 @@ function App() {
             
                 <Route path="/wineries" element={<Wineries
                   wineries={wineries}
+                />}/> 
+                <Route path='/wineries/:wineryId' element={<WineryDetail/>}/>
+                
+                <Route path="/users" element={<Users
+                  users={users}
                 />} />
-                 <Route path="/users" element={<Users
+                <Route path="/users/:id" element={<Users
                   users={users}
                 />} />
                 <Route path="/" element={<Home
