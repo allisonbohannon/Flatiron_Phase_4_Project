@@ -1,8 +1,9 @@
 import React from 'react'
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button'
 
 const WineryCard = ({winery}) => {
-    console.log(winery)
-
+   
     const {name, appellation, comments, visits } = winery
 
     const visitsArr = []
@@ -11,14 +12,29 @@ const WineryCard = ({winery}) => {
 
     const averageRating = visitsArr.reduce((a,b) => a + b)/visits.length
 
+    const handleClick = () => {
+        console.log("Click Tile")
+    }
+    const handleAddComment = () => {
+        console.log("Add Comment")
+    }
+    const handleAddRating = () => {
+        console.log("Add Rating")
+    }
+
   return (
-    <div>
-        <p>Name: {name}</p>
-        <p>Appellation: {appellation}</p>
-        <p>Comments: {comments.length}</p>
-        <p>Visits: {visits.length}</p>
-        <p>Rating: {averageRating}</p>
-    </div>
+    <Card style={{ margin: '2rem', padding: '1em', width:"24rem"}} cols={2}
+            >
+        <Card.Title onClick={handleClick} >{name}</Card.Title>
+        <Card.Body onClick={handleClick} >
+            <Card.Subtitle>Appellation: {appellation}</Card.Subtitle>
+            <Card.Text>Comments: {comments.length}</Card.Text>
+            <Card.Text>Visits: {visits.length}</Card.Text>
+            <Card.Text>Rating: {averageRating}</Card.Text>
+        </Card.Body>
+        <Button onClick={handleAddComment}>Add Comment</Button>
+        <Button onClick={handleAddRating}>Add Rating</Button>
+    </Card>
   )
 }
 
