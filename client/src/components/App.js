@@ -35,7 +35,9 @@ function App() {
                 <Route path="/wineries" element={<Wineries
                   wineries={wineries}
                 />}/> 
-                <Route path='/wineries/:wineryId' element={<WineryDetail/>}/>
+                <Route path='/wineries/:wineryId' element={<WineryDetail
+                  wineries={wineries}
+                />}/>
                 
                 <Route path="/users" element={<Users
                   users={users}
