@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import CommentCard from '../components/CommentCard';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card';
 
@@ -8,9 +9,13 @@ import Card from 'react-bootstrap/Card';
 const WineryDetail = ({wineries}) => {
 
   const { wineryId } = useParams()
-  console.log(typeof parseInt(wineryId))
 
-  const wineryShow = wineries.find(winery => winery.id === parseInt(wineryId))
+  const displayWinery = wineries.find(winery => winery.id === parseInt(wineryId))
+
+  const displayComments = displayWinery.comments.map(comment => {
+    return <CommentCard key={comment.id} comment={comment}/> 
+  })
+  
 
   return (
     <div>
@@ -18,10 +23,10 @@ const WineryDetail = ({wineries}) => {
       <br></br>
       <Card>
         <Card.Body>
-          <Card.Text>Winery: {wineryShow.name}</Card.Text>
-          <Card.Text>Appellation: {wineryShow.appellation}</Card.Text>
-          <Card.Subtitle>Ratings</Card.Subtitle>
-          <Card.Subtitle>Comments</Card.Subtitle>
+          <Card.Text>Winery: {displayWinery.name}</Card.Text>
+          <Card.Text>Appellation: {displayWinery.appellation}</Card.Text>
+          <Card.Subtitle>Ratings: TBD</Card.Subtitle>
+          <Card.Subtitle>Comments: {displayComments}</Card.Subtitle>
         </Card.Body>
       </Card>
 

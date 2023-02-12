@@ -7,11 +7,6 @@ const WineryCard = ({winery}) => {
    
     const {id, name, appellation, comments, visits } = winery
 
-    const visitsArr = []
-
-    visits.forEach(visit => visitsArr.push(visit.rating))
-
-    const averageRating = visitsArr.reduce((a,b) => a + b)/visits.length
 
     const handleClick = () => {
         console.log("Click Tile")
@@ -31,7 +26,7 @@ const WineryCard = ({winery}) => {
             <Card.Subtitle>Appellation: {appellation}</Card.Subtitle>
             <Card.Text>Comments: {comments.length}</Card.Text>
             <Card.Text>Visits: {visits.length}</Card.Text>
-            <Card.Text>Rating: {averageRating}</Card.Text>
+            <Card.Text>Rating: TBD </Card.Text>
         </Card.Body>
         <Button onClick={handleAddComment}>Add Comment</Button>
         <Button onClick={handleAddRating}>Add Rating</Button>
