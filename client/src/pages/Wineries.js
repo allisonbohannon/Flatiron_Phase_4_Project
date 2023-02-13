@@ -1,10 +1,10 @@
 import React from 'react'
 import WineryCard from '../components/WineryCard'
 
-const Wineries = ({wineries}) => {
+const Wineries = ({wineries, currentUser}) => {
 
     const displayWineries = wineries.map(winery => {
-        return <WineryCard key = {winery.id} winery ={winery} />
+        return <WineryCard key = {winery.id} winery ={winery} currentUser={currentUser} />
     })
    
 

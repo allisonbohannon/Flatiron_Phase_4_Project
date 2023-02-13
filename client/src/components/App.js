@@ -25,7 +25,7 @@ function App() {
                             }
                           ]
 
-  const [currentUser, setCurrentUser] = useState(1);
+  const [currentUser, setCurrentUser] = useState(2);
 
   const [wineries, setWineries] = useState(wineryTest)
   const [users, setUsers] = useState([])
