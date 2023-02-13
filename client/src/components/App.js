@@ -6,6 +6,7 @@ import Wineries from "../pages/Wineries";
 import Users from "../pages/Users";
 import WineryDetail from "../pages/WineryDetail";
 import EditCommentForm from "../pages/EditCommentForm";
+import ShowCommentForm from "../pages/ShowCommentForm";
 
 function App() {
 
@@ -60,7 +61,7 @@ function App() {
                   currentUser={currentUser}
                   handleCommentEdit={handleCommentEdit}
                 />}/>
-                 <Route path='/wineries/:wineryId/comments/:commentId' element={<EditCommentForm
+                 <Route path='/wineries/:wineryId/comments/:commentId' element={<ShowCommentForm
                   wineries={wineries}
                   currentUser={currentUser}
                 />}/>

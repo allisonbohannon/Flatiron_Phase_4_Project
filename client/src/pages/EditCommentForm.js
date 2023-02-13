@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import { Navigate } from 'react-router-dom';
+
 
 const EditCommentForm = ({wineries, currentUser, handleCommentEdit}) => {
 
@@ -13,6 +14,16 @@ const EditCommentForm = ({wineries, currentUser, handleCommentEdit}) => {
 
     const winery = wineries.find(winery => winery.id === parseInt(wineryId))
     const comment = winery.comments.find(comment => comment.id === parseInt(commentId))
+
+    
+    useEffect(() => {
+
+        console.log(comment)
+        if (comment.userId != currentUser) {
+            navigate(`/wineries/${winery.id}/comments/${comment.id}`)
+            console.log("Edit Access Denied")
+        }
+    })
 
     const [commentText, setCommentText] = useState(comment.text)
   
@@ -46,7 +57,7 @@ const EditCommentForm = ({wineries, currentUser, handleCommentEdit}) => {
         setCommentText(e.target.value)
     }
     
-    //const checkIfCurrentUser = currentUser == comment.userId ? true : false
+  
    
   return (
     <Container>
