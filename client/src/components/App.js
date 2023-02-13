@@ -23,27 +23,33 @@ function App() {
                             }
                           ]
 
+  const [currentUser, setCurrentUser] = useState(1);
+
   const [wineries, setWineries] = useState(wineryTest)
   const [users, setUsers] = useState([])
 
 
   return (
     <div>
-            <NavigationBar/>
+            <NavigationBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
             <Routes>
             
                 <Route path="/wineries" element={<Wineries
                   wineries={wineries}
+                  currentUser={currentUser}
                 />}/> 
                 <Route path='/wineries/:wineryId' element={<WineryDetail
                   wineries={wineries}
+                  currentUser={currentUser}
                 />}/>
                 
                 <Route path="/users" element={<Users
                   users={users}
+                  currentUser={currentUser}
                 />} />
                 <Route path="/users/:id" element={<Users
                   users={users}
+                  currentUser={currentUser}
                 />} />
                 <Route path="/" element={<Home
                 />} />

@@ -3,21 +3,26 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card';
 
 
-const CommentCard = ({comment}) => {
+const CommentCard = ({comment, currentUser}) => {
+
+    const checkIfCurrentUser = currentUser == comment.userId ? true : false 
+        
 
     const handleEditComment = {
     }
 
     const handleDeleteComment = {
 
-    }
+    } 
+
+    
+    const author = <Card.Subtitle>{comment.userId}</Card.Subtitle>
+    const button = <Button onClick={handleEditComment}>Edit</Button>
 
   return (
     <Card>
         <Card.Text>{comment.text}</Card.Text>
-        <Card.Subtitle>{comment.user}</Card.Subtitle>
-        <Button onClick={handleEditComment }>Edit</Button>
-        <Button onClick={handleDeleteComment}>Delete</Button>
+        {checkIfCurrentUser ? button : author}
 
     </Card>
   )
