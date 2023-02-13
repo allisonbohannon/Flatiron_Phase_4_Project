@@ -29,6 +29,18 @@ function App() {
   const [wineries, setWineries] = useState(wineryTest)
   const [users, setUsers] = useState([])
 
+  const handleCommentEdit = (updatedWinery) => {
+    console.log(updatedWinery)
+    const updatedWineries= wineries.map(winery => {
+      if (winery.id === updatedWinery.id) { 
+        return updatedWinery
+      } else {
+        return winery}
+      }
+    )
+    setWineries(updatedWineries)
+  }
+
 
   return (
     <div>
@@ -43,7 +55,12 @@ function App() {
                   wineries={wineries}
                   currentUser={currentUser}
                 />}/>
-                 <Route path='/wineries/:wineryId/edit' element={<EditCommentForm
+                 <Route path='/wineries/:wineryId/comments/:commentId/edit' element={<EditCommentForm
+                  wineries={wineries}
+                  currentUser={currentUser}
+                  handleCommentEdit={handleCommentEdit}
+                />}/>
+                 <Route path='/wineries/:wineryId/comments/:commentId' element={<EditCommentForm
                   wineries={wineries}
                   currentUser={currentUser}
                 />}/>

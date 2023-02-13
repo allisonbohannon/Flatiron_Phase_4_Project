@@ -4,7 +4,8 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
 
-const CommentCard = ({comment, currentUser}) => {
+const CommentCard = ({comment, winery, currentUser}) => {
+
 
     const checkIfCurrentUser = currentUser == comment.userId ? true : false 
         
@@ -18,7 +19,7 @@ const CommentCard = ({comment, currentUser}) => {
 
     
     const author = <Card.Subtitle>{comment.userId}</Card.Subtitle>
-    const button = <Link to={`/wineries/${comment.id}/edit`}>
+    const button = <Link to={`/wineries/${winery.id}/comments/${comment.id}/edit`}>
                     <Button onClick={handleEditComment}>Edit</Button>
                     </Link>
 

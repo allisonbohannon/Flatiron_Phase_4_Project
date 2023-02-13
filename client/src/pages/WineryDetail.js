@@ -13,7 +13,7 @@ const WineryDetail = ({wineries, currentUser}) => {
   const displayWinery = wineries.find(winery => winery.id === parseInt(wineryId))
 
   const displayComments = displayWinery.comments.map(comment => {
-    return <CommentCard key={comment.id} comment={comment} currentUser={currentUser}/> 
+    return <CommentCard key={comment.id} comment={comment} winery={displayWinery} currentUser={currentUser}/> 
   })
   
 
