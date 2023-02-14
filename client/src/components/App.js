@@ -53,11 +53,17 @@ function App() {
     setCurrentUser(user)
   }
 
+  const onSigup = (userObject) => {
+    //backend
+    setUsers([...users, userObject])
+  }
+
   //if (!currentUser) return <Login onLogin={setCurrentUser} />; 
 
   return (
     <div>
             <NavigationBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+            <br></br>
             <Routes>
             
                 <Route path="/wineries" element={<Wineries
