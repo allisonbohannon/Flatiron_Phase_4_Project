@@ -7,6 +7,9 @@ import Users from "../pages/Users";
 import WineryDetail from "../pages/WineryDetail";
 import EditCommentForm from "../pages/EditCommentForm";
 import ShowCommentForm from "../pages/ShowCommentForm";
+import {averageRating} from "../functions/AverageRating";
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
 
 function App() {
 
@@ -25,13 +28,17 @@ function App() {
                             }
                           ]
 
-  const [currentUser, setCurrentUser] = useState(2);
+  const [currentUser, setCurrentUser] = useState();
 
-  const [wineries, setWineries] = useState(wineryTest)
+  const [wineries, setWineries] = useState([])
   const [users, setUsers] = useState([])
 
+  useEffect(() => {
+    const wineriesWithAverageRating = wineryTest.map(winery => ({...winery, avgRating: averageRating(winery)}))
+    setWineries(wineriesWithAverageRating)
+    }, [])
+
   const handleCommentEdit = (updatedWinery) => {
-    console.log(updatedWinery)
     const updatedWineries= wineries.map(winery => {
       if (winery.id === updatedWinery.id) { 
         return updatedWinery
@@ -42,6 +49,7 @@ function App() {
     setWineries(updatedWineries)
   }
 
+  //if (!currentUser) return <Login onLogin={setCurrentUser} />; 
 
   return (
     <div>
@@ -73,6 +81,13 @@ function App() {
                 <Route path="/users/:id" element={<Users
                   users={users}
                   currentUser={currentUser}
+                />} />
+                <Route path="/login" element={<Login
+                 setCurrentUser={setCurrentUser}
+                />} />
+                <Route path="/signup" element={<SignUp
+                  setUsers={setUsers}
+                  setCurrentUser={setCurrentUser}
                 />} />
                 <Route path="/" element={<Home
                 />} />

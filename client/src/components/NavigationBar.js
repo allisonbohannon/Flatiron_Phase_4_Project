@@ -1,8 +1,12 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
+import Button from 'react-bootstrap/esm/Button';
 
 
-const NavigationBar = () =>  {
+const NavigationBar = ({currentUser, setCurrentUser}) =>  {
+
+    const handleLogoutClick = () => {}
+
     return (
         <div>
             <NavLink
@@ -17,11 +21,16 @@ const NavigationBar = () =>  {
                 Wineries
             </NavLink>
             <NavLink
-                to='users'
+                to='/users'
                 exact
                 >
                 Users
             </NavLink>
+            <p>{currentUser? `Cheers, ${currentUser}!` : ""}</p>
+            <div>{currentUser?  (
+                    <button onClick={handleLogoutClick}>Logout</button>) : (
+                    <NavLink to="/Login"><Button>Log In</Button></NavLink>)}
+            </div> 
         </div>
        
      )
