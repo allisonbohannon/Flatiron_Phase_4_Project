@@ -49,6 +49,10 @@ function App() {
     setWineries(updatedWineries)
   }
 
+  const onLogin = (user) => {
+    setCurrentUser(user)
+  }
+
   //if (!currentUser) return <Login onLogin={setCurrentUser} />; 
 
   return (
