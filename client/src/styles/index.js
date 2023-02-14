@@ -5,5 +5,8 @@ import Input from "./Input";
 import Label from "./Label";
 import Textarea from "./Textarea";
 import Error from "./Error";
+import NavBar from "./NavBar";
+import NavLinkStyle from "./NavLinkStyle";
 
-export { Box, Button, Error, FormField, Input, Label, Textarea };
+
+export { Box, Button, Error, FormField, Input, Label, Textarea, NavBar, NavLinkStyle };
