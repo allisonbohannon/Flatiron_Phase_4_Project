@@ -49,6 +49,14 @@ export const CardImage = styled.image`
   background-size: cover;
 `;
 
+export const CardScroller = styled.div`
+  margin: 0 auto;
+  height: 30em;
+  width: 20em;
+  border: 1px solid black
+  overflow: auto;
+`
+
 export const CardFieldset = styled.fieldset`
   position: relative;
   padding: 0;

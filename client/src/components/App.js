@@ -10,7 +10,7 @@ import ShowCommentForm from "../pages/ShowCommentForm";
 import {averageRating} from "../functions/AverageRating";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
-import { wineryTest } from "../testdata";
+import { wineryTest, userTest } from "../testdata";
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(1);
 
   const [wineries, setWineries] = useState(wineryTest)
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState(userTest)
 
   //useEffect to fetch initial state
 
@@ -40,11 +40,7 @@ function App() {
     setWineries(updatedWineries)
   }
 
-  const onLogin = (user) => {
-    setCurrentUser(user)
-  }
-
-  const onSigup = (userObject) => {
+  const onSignup = (userObject) => {
     //backend
     setUsers([...users, userObject])
   }
@@ -124,6 +120,7 @@ function App() {
                 
                 <Route path="/users" element={<Users
                   users={users}
+                  wineries={wineries}
                   currentUser={currentUser}
                 />} />
                 <Route path="/users/:id" element={<Users
@@ -136,6 +133,7 @@ function App() {
                 <Route path="/signup" element={<SignUp
                   setUsers={setUsers}
                   setCurrentUser={setCurrentUser}
+                  onSignup={onSignup}
                 />} />
                 <Route path="/" element={<Home
                 />} />

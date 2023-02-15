@@ -12,4 +12,15 @@ const wineryTest = [{id: 1, name: "winery1", appellation: "Napa", img: "https://
                             }
                           ]
 
-export {wineryTest}
+const userTest = [{id:1, username:'Allison', passwordDigest:'allison', 
+                  visits:[{id:1, userId:1, rating: 3, wineryId:1}, {id:5, userId:1, rating: 5, wineryId: 3}], 
+                  comments:[{id:1, userId:1, text: "xyz", wineryId:1},{id:5, userId:1, text: "jkl", wineryId: 3}], },
+                  {id:2, username:'Kelly', passwordDigest:'kelly', 
+                  visits:[{id:2, userId:3, rating: 5, wineryId: 2},{id:3, userId:2, rating: 1, wineryId: 3}], 
+                  comments:[{id:3, userId:2, text: "def", wineryId: 2},{id:4, userId:2, text: "ghi", wineryId: 3}]},
+                  {id:3, username:'Bohannon', passwordDigest:'bohannon', 
+                  visits:[{id:2, userId:3, rating: 5, wineryId:1},{id:6, userId:3, rating: 4, wineryId: 3}], 
+                  comments:[{id:2, userId:3, rating: 5, wineryId:1}, {id:6, userId:3, text: "mno", wineryId: 3}]}
+                ]
+
+export {wineryTest, userTest}
