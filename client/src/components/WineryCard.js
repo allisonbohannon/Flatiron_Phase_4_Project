@@ -1,28 +1,54 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
+import { Button } from '../styles';
 import { Link } from 'react-router-dom';
+import StarRatingShow from './StarRatingShow';
+import StarRatingEdit from './StarRatingEdit';
 
-const WineryCard = ({winery, currentUser}) => {
+const WineryCard = ({winery, currentUser, onChangeRating, onAddRating}) => { 
+  
    
-    const {id, name, appellation, comments, visits } = winery
+    const {id, name, appellation, comments, visits, avgRating } = winery
+    
+    const userVisit = visits.find(visit => visit.userId === currentUser)
+
+    const [showAddRating, setShowAddRating] = useState(false)
 
 
     const handleClick = () => {
-        console.log("Click Tile")
     }
+
     const handleAddComment = () => {
         console.log("Add Comment")
     }
-    const handleAddRating = () => {
-        console.log("Add Rating")
+    const handleShowAddRating = () => {
+        setShowAddRating(true)
     }
-    const userVisit = winery.visits.find(visit => visit.userId === currentUser)
 
-    const editRatingButton = <Button>Edit Rating</Button>
+    const handleAddRating = () => {
+        const newVisitObj = {
+            userId: currentUser,
+            wineryId: winery.id,
+            rating: 0
+        }
+        onAddRating(newVisitObj)
+    }
 
-    const addRatingButton = <Button>Add Rating</Button>
+    const handleChangeRating = (rating) => {
+        const updatedVisitObj = {
+            id: userVisit.id,
+            userId: currentUser,
+            wineryId: winery.id,
+            rating: rating
+        }
+
+        onChangeRating(updatedVisitObj)
+
+    }
     
+    const displayAvgRating = () =>  <StarRatingShow rating={avgRating}/>
+    const displayUserRating = () => <div>Your Rating: <StarRatingEdit userRating={userVisit.rating} onChange={handleChangeRating} /></div> 
+ 
 
   return (
     <Card style={{ margin: '2rem', padding: '1em', width:"24rem"}} cols={2}
@@ -32,11 +58,11 @@ const WineryCard = ({winery, currentUser}) => {
             <Card.Subtitle>Appellation: {appellation}</Card.Subtitle>
             <Card.Text>Comments: {comments.length}</Card.Text>
             <Card.Text>Visits: {visits.length}</Card.Text>
-            <Card.Text>Avg Rating: TBD </Card.Text>
-            <Card.Text>{userVisit? `Your Rating: ${userVisit.rating}` : '' }</Card.Text>
+            <Card.Text>Avg Rating: {displayAvgRating()}  </Card.Text>
+            <Card.Text>{userVisit? displayUserRating() : '' }</Card.Text> 
         </Card.Body>
-        <Button onClick={handleAddComment}>Add Comment</Button>
-       <div>{userVisit? editRatingButton : addRatingButton} </div>
+              {userVisit? "" : <Button onClick={handleAddRating}>Add Rating</Button>}
+             <Button onClick={handleAddComment}>Add Comment</Button>
     </Card>
   )
 }
