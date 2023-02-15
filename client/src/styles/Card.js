@@ -20,6 +20,7 @@ export const Card = styled.div`
   height: 40em;
   font-family: Quicksand, arial, sans-serif;
   border: 1px solid gray;
+  box-shadow: 5px 10px #888888
   border-radius: 5px;
 `;
 
@@ -154,18 +155,15 @@ export const CardButton = styled.button`
   display: block;
   width: 100%;
   margin: 3px;
-  
   font-family: inherit;
   font-size: 1rem;
   font-weight: 700;
   color: #fff;
   background-color: rgb(101,62,82);
-  border: 1 px solid transparent;
+  border: 1 px solid;
   border-radius: 6px;
   padding: 8px 16px;
   cursor: pointer;
-  
-
   &:hover {
     opacity: 0.9;
   }

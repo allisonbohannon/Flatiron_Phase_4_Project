@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Card, CardHeader, CardHeading, CardBody, CardLink, CardButton } from '../styles';
+import { Link } from 'react-router-dom';
 import StarRatingShow from './StarRatingShow';
 import StarRatingEdit from './StarRatingEdit';
 
@@ -44,9 +45,17 @@ const WineryCard = ({winery, currentUser, onChangeRating, onAddRating}) => {
         <CardHeader>
             <img src={img} style={{ width:'23em'} }/>
         </CardHeader>
-        <CardLink to={`/wineries/${id}`}>
-                <CardHeading>{name}</CardHeading>
-        </CardLink>
+        <Link to={`/wineries/${id}`} style={{display: 'inline-block',
+                                    fontSize: '1.2em',
+                                    textDecoration: 'none',
+                                    color: '#aaa',
+                                    borderBottom: '1px solid #ddd',
+                                    justifySelf: 'center',
+                                    padding:'1em',
+                                    cursor: 'pointer',
+                                    transition: 'color 0.25s ease-in',
+                                    '&':'hover {color: #777;}'}}>
+                {name}</Link>
         <CardHeading style={{'font-size':'1.1em', color:'rgb(150,78,108)' }}>{appellation}</CardHeading>
         <CardBody>
             <p>Visits: {visits.length}</p>
