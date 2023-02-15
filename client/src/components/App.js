@@ -51,11 +51,13 @@ function App() {
 
     const updatedWinery = targetWinery.visits.map(visit => {
       if (visit.id === updatedVisitObj.id) {
-        return {
+        return ({
           userId:updatedVisitObj.userId,
           rating:updatedVisitObj.rating, 
           id:updatedVisitObj.id
-        }
+        })
+      } else {
+        return
       }
     })
 

@@ -17,7 +17,7 @@ const EditCommentForm = ({wineries, currentUser, handleCommentEdit}) => {
 
     
     useEffect(() => {
-        if (comment.userId != currentUser) {
+        if (comment.userId !== currentUser) {
             navigate(`/wineries/${winery.id}/comments/${comment.id}`)
             console.log("Edit Access Denied")
         }

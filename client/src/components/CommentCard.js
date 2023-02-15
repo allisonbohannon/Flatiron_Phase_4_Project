@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const CommentCard = ({comment, winery, currentUser}) => {
 
 
-    const checkIfCurrentUser = currentUser == comment.userId ? true : false 
+    const checkIfCurrentUser = currentUser === comment.userId ? true : false 
         
 
     const handleEditComment = {

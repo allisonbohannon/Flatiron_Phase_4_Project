@@ -1,9 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
-import { NavBar, Button, NavLinkStyles, NavLinkStyle } from "../styles";
-
-
-
+import { NavBar, Button, NavLinkStyle } from "../styles";
 
 const NavigationBar = ({currentUser, setCurrentUser}) =>  {
 

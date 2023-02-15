@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { Button, Card, CardHeader, CardHeading, CardImage, CardBody, CardLink, CardButton } from '../styles';
+import React from 'react'
+import { Button, Card, CardHeader, CardHeading, CardBody, CardLink, CardButton } from '../styles';
 import StarRatingShow from './StarRatingShow';
 import StarRatingEdit from './StarRatingEdit';
 
@@ -10,17 +10,8 @@ const WineryCard = ({winery, currentUser, onChangeRating, onAddRating}) => {
     
     const userVisit = visits.find(visit => visit.userId === currentUser)
 
-    const [showAddRating, setShowAddRating] = useState(false)
-
-
-    const handleClick = () => {
-    }
-
     const handleAddComment = () => {
         console.log("Add Comment")
-    }
-    const handleShowAddRating = () => {
-        setShowAddRating(true)
     }
 
     const handleAddRating = () => {
