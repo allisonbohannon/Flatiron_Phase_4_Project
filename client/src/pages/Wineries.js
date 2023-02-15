@@ -1,5 +1,6 @@
 import React from 'react'
 import WineryCard from '../components/WineryCard'
+import { CardContainer } from '../styles'
 
 const Wineries = ({wineries, currentUser, onChangeRating, onAddRating}) => {
 
@@ -8,7 +9,7 @@ const Wineries = ({wineries, currentUser, onChangeRating, onAddRating}) => {
     })
 
   return (
-    <div>{displayWineries}</div>
+    <CardContainer>{displayWineries}</CardContainer>
   )
 }
 

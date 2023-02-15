@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 const COLORS = {
   primary: {
-    "--main": "rgb(101,62,82",
+    "--main": "rgb(101,62,82)",
     "--accent": "white",
   },
   secondary: {
     "--main": "lavenderblush",
-    "--accent": "indigo",
+    "--accent": "rgb(101,62,82)",
   },
 };
 
@@ -23,8 +23,11 @@ function Button({ variant = "fill", color = "primary", ...props }) {
 }
 
 const ButtonBase = styled.button`
+  display: block; 
   cursor: pointer;
   font-size: 1rem;
+  font-weight: 700;
+  margin: 3px;
   border: 1px solid transparent;
   border-radius: 6px;
   padding: 8px 16px;

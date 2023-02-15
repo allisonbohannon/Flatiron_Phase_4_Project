@@ -11,12 +11,15 @@ const NavigationBar = ({currentUser, setCurrentUser}) =>  {
 
     return (
         <NavBar>
-            <NavLink
-                to="/"
-                exact
-                >
-                WineFriends
-            </NavLink>
+            <NavLinkStyle>
+                <NavLink
+                    to="/"
+                    exact
+                    style={{font:'Montserrat', 'font-size':'2em', color:'rgb(227,210,139)'}}
+                    >
+                    WineFriends
+                </NavLink>
+            </NavLinkStyle>
             <NavLinkStyle>
                 <NavLink
                     to="/wineries"
