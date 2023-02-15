@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from "react-bootstrap/Button";
+import { CardContainer, FormField, Button } from '../styles';
+
+
+
 
 
 
@@ -58,17 +59,17 @@ const EditCommentForm = ({wineries, currentUser, handleCommentEdit}) => {
   
    
   return (
-    <Container>
-        <Form className="mb-3" onSubmit={handleSubmit}>
-                <Form.Control type="text" 
+    <CardContainer>
+        <form c onSubmit={handleSubmit}>
+                <FormField type="text" 
                         name="name"
                         onChange={handleChange} 
                         value={commentText}>
-                </Form.Control> 
+                </FormField> 
                 <Button type="submit">Submit</Button>
-        </Form>
+        </form>
       
-    </Container>
+    </CardContainer>
   )
 }
 
