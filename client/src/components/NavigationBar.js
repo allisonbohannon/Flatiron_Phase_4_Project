@@ -3,11 +3,19 @@ import { NavLink } from "react-router-dom";
 import { NavBar, Button, NavLinkStyle } from "../styles";
 import { UserContext } from '../context/User';
 
-const NavigationBar = ({}) =>  {
+const NavigationBar = () =>  {
 
     const { currentUser, setCurrentUser } = useContext(UserContext)
 
     const handleLogout = () =>{
+
+        // fetch("/logout", { method: "DELETE" }).then((r) => {
+        //     if (r.ok) {
+        //       setCurrentUser(null);
+        //     }
+        //   });
+
+
         setCurrentUser(null)
     }
 

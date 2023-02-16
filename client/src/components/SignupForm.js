@@ -2,9 +2,9 @@ import React, { useState, useContext } from "react";
 import { Button, Error, Input, FormField, Label, Textarea } from "../styles";
 import { UserContext } from "../context/User";
 
-function SignUpForm({ onLogin }) {
+function SignUpForm({onAddUser}) {
 
-  const { user, setUser } = useContext(UserContext)
+  const { currentUser, setCurrentUser } = useContext(UserContext)
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,28 +16,41 @@ function SignUpForm({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
-    fetch("/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+
+    const newUserObj = {
         username,
         password,
         password_confirmation: passwordConfirmation,
         image_url: imageUrl,
         bio,
-      }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
       }
-    });
+
+    // setErrors([]);
+    // setIsLoading(true);
+    // fetch("/signup", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username,
+    //     password,
+    //     password_confirmation: passwordConfirmation,
+    //     image_url: imageUrl,
+    //     bio,
+    //   }),
+    // }).then((r) => {
+    //   setIsLoading(false);
+    //   if (r.ok) {
+    //     r.json().then((user) => onLogin(user));
+    //   } else {
+    //     r.json().then((err) => setErrors(err.errors));
+    //   }
+    // });
+
+    setCurrentUser(username)
+    onAddUser(newUserObj)
+
   }
 
   return (
