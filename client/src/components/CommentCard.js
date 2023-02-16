@@ -8,23 +8,11 @@ const CommentCard = ({comment, winery}) => {
 
     const currentUser = useContext(UserContext)
 
-    console.log(currentUser)
-
-
     const checkIfCurrentUser = currentUser.currentUser === comment.userId ? true : false 
-        
-
-    const handleEditComment = {
-    }
-
-    const handleDeleteComment = {
-
-    } 
-
     
     const author = <p>{comment.userId}</p>
     const button = <Link to={`/wineries/${winery.id}/comments/${comment.id}/edit`}>
-                    <Button onClick={handleEditComment}>Edit</Button>
+                    <Button>Edit</Button>
                     </Link>
 
   return (
