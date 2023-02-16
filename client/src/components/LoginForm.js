@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
-import { Button, Error, Input, FormField, Label } from "../styles";
+import { Button, Error, Input, FormField, Label} from "../styles";
 import { UserContext } from "../context/User";
+import { useNavigate } from "react-router-dom";
 
 
-const LoginForm = ({onLogin}) => {
+const LoginForm = ({}) => {
 
-    const { user, setUser } = useContext(UserContext)
+    const { currentUser, setCurrentUser } = useContext(UserContext)
+    const navigate = useNavigate()
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -14,25 +16,29 @@ const LoginForm = ({onLogin}) => {
   
     function handleSubmit(e) {
       e.preventDefault();
-      setIsLoading(true);
-      fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }).then((r) => {
-        setIsLoading(false);
-        if (r.ok) {
-          r.json().then((user) => onLogin(user));
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
-      });
+      // setIsLoading(true);
+      // fetch("/login", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ username, password }),
+      // }).then((r) => {
+      //   setIsLoading(false);
+      //   if (r.ok) {
+      //     r.json().then((user) => onLogin(user));
+      //   } else {
+      //     r.json().then((err) => setErrors(err.errors));
+      //   }
+      // });
+
+      setCurrentUser(username)
+      navigate('/')
+
     }
   
     return (
-      <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
         <FormField>
           <Label htmlFor="username">Username</Label>
           <Input
@@ -64,6 +70,7 @@ const LoginForm = ({onLogin}) => {
           ))}
         </FormField>
       </form>
+      
     );
   }
 
