@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
+import { UserContext } from "../context/User";
 
 
 const LoginForm = ({onLogin}) => {
+
+    const { user, setUser } = useContext(UserContext)
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

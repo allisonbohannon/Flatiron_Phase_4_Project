@@ -6,14 +6,14 @@ import Card from 'react-bootstrap/Card';
 
 
 
-const WineryDetail = ({wineries, currentUser}) => {
+const WineryDetail = ({wineries}) => {
 
   const { wineryId } = useParams()
 
   const displayWinery = wineries.find(winery => winery.id === parseInt(wineryId))
 
   const displayComments = displayWinery.comments.map(comment => {
-    return <CommentCard key={comment.id} comment={comment} winery={displayWinery} currentUser={currentUser}/> 
+    return <CommentCard key={comment.id} comment={comment} winery={displayWinery} /> 
   })
   
 

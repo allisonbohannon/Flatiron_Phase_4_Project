@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Card, CardHeader, CardHeading, CardBody, CardLink, CardButton } from '../styles';
 import { Link } from 'react-router-dom';
 import StarRatingShow from './StarRatingShow';
 import StarRatingEdit from './StarRatingEdit';
+import { UserContext } from '../context/User';
 
-const WineryCard = ({winery, currentUser, onChangeRating, onAddRating}) => { 
+const WineryCard = ({winery, onChangeRating, onAddRating}) => { 
+
+    const currentUser = useContext(UserContext)
   
-   
     const {id, name, img, appellation, comments, visits, avgRating } = winery
     
     const userVisit = visits.find(visit => visit.userId === currentUser)

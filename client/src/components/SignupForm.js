@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Error, Input, FormField, Label, Textarea } from "../styles";
+import { UserContext } from "../context/User";
 
 function SignUpForm({ onLogin }) {
+
+  const { user, setUser } = useContext(UserContext)
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");

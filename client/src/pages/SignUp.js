@@ -1,9 +1,9 @@
 import React from 'react'
 import SignUpForm from '../components/SignupForm'
 
-const SignUp = ({onLogin}) => {
+const SignUp = ({}) => {
   return (
-    <SignUpForm onLogin={onLogin}/>
+    <SignUpForm />
   )
 }
 

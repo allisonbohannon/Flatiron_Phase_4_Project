@@ -3,10 +3,10 @@ import LoginForm from '../components/LoginForm'
 import { Link } from 'react-router-dom'
 
 
-const Login = ({setCurrentUser}) => {
+const Login = ({}) => {
   return (
     <div>
-        <LoginForm setCurrentUser={setCurrentUser} />
+        <LoginForm />
         <Link to='/signup'>Not a Member? Sign up now!</Link>
     </div>
   )

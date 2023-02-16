@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { UserProvider } from "../context/User";
 import NavigationBar from "./NavigationBar";
 import Home from "../pages/Home";
 import Wineries from "../pages/Wineries";
@@ -23,6 +24,16 @@ function App() {
   const [users, setUsers] = useState(userTest)
 
   //useEffect to fetch initial state
+
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+  
 
   useEffect(() => {
     const wineriesWithAverageRating = wineryTest.map(winery => ({...winery, avgRating: averageRating(winery)}))
@@ -93,54 +104,45 @@ function App() {
   //if (!currentUser) return <Login onLogin={setCurrentUser} />; 
 
   return (
-    <div>
+    <UserProvider>
             <NavigationBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
             <br></br>
             <Routes>
             
                 <Route path="/wineries" element={<Wineries
                   wineries={wineries}
-                  currentUser={currentUser}
                   onChangeRating={onChangeRating}
                   onAddRating={onAddRating}
                 />}/> 
                 <Route path='/wineries/:wineryId' element={<WineryDetail
                   wineries={wineries}
-                  currentUser={currentUser}
                   onChangeRating={onChangeRating}
                   onAddRating={onAddRating}
                 />}/>
                  <Route path='/wineries/:wineryId/comments/:commentId/edit' element={<EditCommentForm
                   wineries={wineries}
-                  currentUser={currentUser}
                   handleCommentEdit={handleCommentEdit}
                 />}/>
                  <Route path='/wineries/:wineryId/comments/:commentId' element={<ShowCommentForm
                   wineries={wineries}
-                  currentUser={currentUser}
                 />}/>
-                
                 <Route path="/users" element={<Users
                   users={users}
                   wineries={wineries}
-                  currentUser={currentUser}
                 />} />
                 <Route path="/users/:id" element={<Users
                   users={users}
-                  currentUser={currentUser}
                 />} />
                 <Route path="/login" element={<Login
-                 setCurrentUser={setCurrentUser}
                 />} />
                 <Route path="/signup" element={<SignUp
                   setUsers={setUsers}
-                  setCurrentUser={setCurrentUser}
                   onSignup={onSignup}
                 />} />
                 <Route path="/" element={<Home
                 />} />
             </Routes>
-        </div>
+        </UserProvider>
   );
 }
 
