@@ -67,7 +67,7 @@ export const CardImage = styled.image`
 export const CardScroller = styled.div`
   margin: 0 auto;
   height: 25%;
-  width: 80%;
+  width: 100%;
   border: 1px solid black
   overflow: auto;
 `
