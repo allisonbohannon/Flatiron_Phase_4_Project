@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../context/User';
 
 
-const CommentCard = ({comment, winery, currentUser}) => {
+const CommentCard = ({comment, winery}) => {
 
     const currentUser = useContext(UserContext)
 
