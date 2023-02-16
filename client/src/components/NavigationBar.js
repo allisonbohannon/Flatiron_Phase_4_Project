@@ -7,7 +7,9 @@ const NavigationBar = ({}) =>  {
 
     const { currentUser, setCurrentUser } = useContext(UserContext)
 
-    const handleLogoutClick = () =>{}
+    const handleLogout = () =>{
+        setCurrentUser(null)
+    }
 
     return (
         <NavBar>
@@ -40,7 +42,7 @@ const NavigationBar = ({}) =>  {
 
             <p>{currentUser? `Cheers, ${currentUser}!` : ""}</p>
             <div>{currentUser?  (
-                    <button onClick={handleLogoutClick}>Logout</button>) : (
+                    <button onClick={handleLogout}>Logout</button>) : (
                     <NavLink to="/Login"><Button>Log In</Button></NavLink>)}
             </div> 
         </NavBar>
