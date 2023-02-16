@@ -61,7 +61,6 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
         <CardHeading style={{'font-size':'1.1em', color:'rgb(150,78,108)' }}>{appellation}</CardHeading>
         <CardBody>
             <p>Visits: {visits.length}</p>
-            <p>Comments: {comments.length}</p>
         </CardBody>
             <span>
                 <p>Avg Rating: {displayAvgRating()}  </p>
@@ -69,8 +68,6 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
             </span>
             <p>{userVisit? displayUserRating() : '' }</p> 
            
-    
-              
              <CardButton ><Link to={`/wineries/${id}/comments/new`} style={{color:'white', textDecoration:'none'}} >Add Comment</Link></CardButton>
     </Card>
   )

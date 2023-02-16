@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../context/User';
 import { Container, FormField, Button, CardHeading, Label, Input } from '../styles';
 
 const AddCommentForm = ({wineries, onAddComment, users}) => {
 
   const currentUser = useContext(UserContext)
+  const navigate = useNavigate()
   
   const { wineryId } = useParams()
 
@@ -27,6 +28,9 @@ const AddCommentForm = ({wineries, onAddComment, users}) => {
     //backend
 
     onAddComment(newCommentObj)
+
+    navigate(-1)
+
 
   }
 

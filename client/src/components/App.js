@@ -36,7 +36,7 @@ function App() {
     }, [])
 
 
-  const onCommentAdd = (comment) => {
+  const onAddComment = (comment) => {
     console.log(comment)
 
   }
@@ -53,7 +53,6 @@ function App() {
   }
 
   const onSignup = (userObject) => {
-    //backend
     setUsers([...users, userObject])
   }
 
@@ -127,7 +126,7 @@ function App() {
                  <Route path='/wineries/:wineryId/comments/new' element={<AddCommentForm
                   wineries={wineries}
                   users={users}
-                  onCommentAdd={onCommentAdd}
+                  onAddComment={onAddComment}
                 />}/>
                  <Route path='/wineries/:wineryId/comments/:commentId' element={<ShowCommentForm
                   wineries={wineries}
@@ -142,7 +141,6 @@ function App() {
                 <Route path="/login" element={<Login
                 />} />
                 <Route path="/signup" element={<SignUp
-                  setUsers={setUsers}
                   onSignup={onSignup}
                 />} />
                 <Route path="/" element={<Home
