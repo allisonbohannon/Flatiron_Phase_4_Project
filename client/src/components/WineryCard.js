@@ -13,10 +13,6 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
     
     const userVisit = visits.find(visit => visit.userId === currentUser)
 
-    const handleAddComment = () => {
-        
-    }
-
     const handleAddRating = () => {
         const newVisitObj = {
             userId: currentUser,
