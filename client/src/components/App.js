@@ -8,15 +8,13 @@ import Users from "../pages/Users";
 import WineryDetail from "../pages/WineryDetail";
 import EditCommentForm from "../pages/EditCommentForm";
 import ShowCommentForm from "../pages/ShowCommentForm";
+import AddCommentForm from "../pages/AddCommentForm";
 import {averageRating} from "../functions/AverageRating";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import { wineryTest, userTest } from "../testdata";
 
 function App() {
-
-  
-
   const [wineries, setWineries] = useState(wineryTest)
   const [users, setUsers] = useState(userTest)
 
@@ -37,7 +35,13 @@ function App() {
     setWineries(wineriesWithAverageRating)
     }, [])
 
-  const handleCommentEdit = (updatedWinery) => {
+
+  const onCommentAdd = (comment) => {
+    console.log(comment)
+
+  }
+
+  const onCommentEdit = (updatedWinery) => {
     const updatedWineries= wineries.map(winery => {
       if (winery.id === updatedWinery.id) { 
         return updatedWinery
@@ -118,7 +122,12 @@ function App() {
                 />}/>
                  <Route path='/wineries/:wineryId/comments/:commentId/edit' element={<EditCommentForm
                   wineries={wineries}
-                  handleCommentEdit={handleCommentEdit}
+                  onCommentEdit={onCommentEdit}
+                />}/>
+                 <Route path='/wineries/:wineryId/comments/new' element={<AddCommentForm
+                  wineries={wineries}
+                  users={users}
+                  onCommentAdd={onCommentAdd}
                 />}/>
                  <Route path='/wineries/:wineryId/comments/:commentId' element={<ShowCommentForm
                   wineries={wineries}

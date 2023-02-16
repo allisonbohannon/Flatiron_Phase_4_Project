@@ -14,7 +14,7 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
     const userVisit = visits.find(visit => visit.userId === currentUser)
 
     const handleAddComment = () => {
-        console.log("Add Comment")
+        
     }
 
     const handleAddRating = () => {
@@ -71,7 +71,7 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
            
     
               
-             <CardButton onClick={handleAddComment}>Add Comment</CardButton>
+             <CardButton ><Link to={`/wineries/${id}/comments/new`} style={{color:'white', textDecoration:'none'}} >Add Comment</Link></CardButton>
     </Card>
   )
 }
