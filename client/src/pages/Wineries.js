@@ -5,7 +5,9 @@ import { CardContainer } from '../styles'
 const Wineries = ({wineries, onChangeRating, onAddRating}) => {
 
     const displayWineries = wineries.map(winery => {
-         return <WineryCard key={winery.id} winery={winery} onChangeRating={onChangeRating} onAddRating={onAddRating}/>
+         return (<li key={winery.id} style={{listStyle:'none'}}>
+            <WineryCard  winery={winery} onChangeRating={onChangeRating} onAddRating={onAddRating}/>
+          </li>)
     })
 
   return (

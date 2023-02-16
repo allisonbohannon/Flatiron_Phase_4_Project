@@ -11,11 +11,8 @@ import { UserContext } from '../context/User';
 const WineryDetail = ({wineries, onChangeRating, onAddRating}) => {
 
   const { wineryId } = useParams()
-  const {currentUser, setCurrentUser} = useContext(UserContext)
+  const {currentUser} = useContext(UserContext)
   const navigate = useNavigate()
-
-  //delete me!
-  setCurrentUser(1)
 
   const displayWinery = wineries.find(winery => winery.id === parseInt(wineryId))
 
