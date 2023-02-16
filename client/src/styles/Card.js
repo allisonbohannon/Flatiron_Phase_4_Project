@@ -24,6 +24,21 @@ export const Card = styled.div`
   border-radius: 5px;
 `;
 
+export const DetailCard = styled.div`
+  display: inline-grid;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1em;
+  margin: 2em;
+  width: 40em;
+  height: 80em;
+  font-family: Quicksand, arial, sans-serif;
+  border: 1px solid gray;
+  box-shadow: 5px 10px #888888
+  border-radius: 5px;
+`;
+
 export const CardHeader = styled.header`
   display: flex; 
   justify-contents: 
@@ -51,8 +66,8 @@ export const CardImage = styled.image`
 
 export const CardScroller = styled.div`
   margin: 0 auto;
-  height: 30em;
-  width: 20em;
+  height: 25%;
+  width: 80%;
   border: 1px solid black
   overflow: auto;
 `
