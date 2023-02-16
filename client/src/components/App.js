@@ -16,24 +16,21 @@ import { wineryTest, userTest } from "../testdata";
 function App() {
 
   
-  
-
-  const [currentUser, setCurrentUser] = useState(1);
 
   const [wineries, setWineries] = useState(wineryTest)
   const [users, setUsers] = useState(userTest)
 
   //useEffect to fetch initial state
 
-  useEffect(() => {
-    // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
-  
+  // useEffect(() => {
+  //   // auto-login
+  //   fetch("/me").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((user) => setUser(user));
+  //     }
+  //   });
+  // }, []);
+
 
   useEffect(() => {
     const wineriesWithAverageRating = wineryTest.map(winery => ({...winery, avgRating: averageRating(winery)}))
@@ -105,7 +102,7 @@ function App() {
 
   return (
     <UserProvider>
-            <NavigationBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+            <NavigationBar />
             <br></br>
             <Routes>
             

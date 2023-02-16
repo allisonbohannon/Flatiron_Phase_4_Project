@@ -4,12 +4,12 @@ import { UserContext } from '../context/User';
 import { CardContainer, FormField, Button } from '../styles';
 
 
-const EditCommentForm = ({wineries, currentUser, handleCommentEdit}) => {
+const EditCommentForm = ({wineries, handleCommentEdit}) => {
 
     const navigate = useNavigate()
 
     const currentUser = useContext(UserContext)
-    
+
     const {wineryId, commentId} = useParams()
 
     const winery = wineries.find(winery => winery.id === parseInt(wineryId))

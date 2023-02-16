@@ -5,7 +5,7 @@ import { UserContext } from '../context/User';
 
 const NavigationBar = ({}) =>  {
 
-    const { user, setUser } = useContext(UserContext)
+    const { currentUser, setCurrentUser } = useContext(UserContext)
 
     const handleLogoutClick = () =>{}
 
