@@ -22,7 +22,7 @@ const NavigationBar = () =>  {
                 <NavLink
                     to="/"
                     exact
-                    style={{font:'Montserrat', 'font-size':'2em', color:'rgb(227,210,139)'}}
+                    style={{font:'Arial', 'font-size':'2em', color:'#aaa'}}
                     >
                     WineFriends
                 </NavLink>
@@ -31,6 +31,7 @@ const NavigationBar = () =>  {
                 <NavLink
                     to="/wineries"
                     exact
+                    style={{color: '#ffffff'}}
                     >
                     Wineries
                 </NavLink>
@@ -39,6 +40,7 @@ const NavigationBar = () =>  {
                 <NavLink
                     to='/users'
                     exact
+                    style={{color: '#ffffff'}}
                     >
                     Users
                 </NavLink>

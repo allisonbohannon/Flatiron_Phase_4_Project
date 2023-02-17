@@ -21,7 +21,7 @@ export const Card = styled.div`
   padding: 1em;
   margin: 2em;
   width: 24em;
-  height: 40em;
+  height: 48em;
   font-family: Quicksand, arial, sans-serif;
   border: 1px ;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -179,7 +179,8 @@ export const CardButton = styled.button`
   font-weight: 700;
   color: #fff;
   background-color: rgb(101,62,82);
-  border: 1 px solid;
+  border: 0;
+  box-shadow: none;
   border-radius: 6px;
   padding: 8px 16px;
   cursor: pointer;

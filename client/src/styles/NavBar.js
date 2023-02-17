@@ -10,7 +10,7 @@ const NavBar = styled.nav`
     @media screen and (min-width):790px { 
         width: 60%
     };
-    background-color: rgb(150,78,108); 
+    background-color: #472d30; 
     z-index:99; 
     display:flex; 
     flex-direction: row; 

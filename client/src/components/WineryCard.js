@@ -41,12 +41,12 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
   return (
     <Card>
         <CardHeader>
-            <img src={imagesrc} style={{ width:'23em'} }/>
+            <img src={imagesrc} style={{ width:'24em', border:'1px solid gray'} }/>
         </CardHeader>
         <Link to={`/wineries/${id}`} style={{display: 'inline-block',
                                     fontSize: '1.2em',
                                     textDecoration: 'none',
-                                    color: '#aaa',
+                                    color: '#472d30',
                                     borderBottom: '1px solid #ddd',
                                     justifySelf: 'center',
                                     padding:'1em',
@@ -54,12 +54,12 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
                                     transition: 'color 0.25s ease-in',
                                     '&':'hover {color: #777;}'}}>
                 {name}</Link>
-        <CardHeading style={{'font-size':'1.1em', color:'rgb(150,78,108)' }}>{city}</CardHeading>
+        <CardHeading style={{'font-size':'1.1em', color:'#aaa' }}>{city}</CardHeading>
         <CardBody>
             <p>{about}</p>
         </CardBody>
             {/* <span>
-                <p>Avg Rating: {displayAvgRating()}  </p>
+                <p>{displayAvgRating()}  </p>
             {userVisit? "" : <Button  onClick={handleAddRating}>Add Rating</Button>}
             </span>
             <p>{userVisit? displayUserRating() : '' }</p>  */}
