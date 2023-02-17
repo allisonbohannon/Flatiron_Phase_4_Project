@@ -32,9 +32,12 @@ function App() {
 
 
   useEffect(() => {
-    const wineriesWithAverageRating = wineryTest.map(winery => ({...winery, avgRating: averageRating(winery)}))
-    setWineries(wineriesWithAverageRating)
-    }, [])
+    fetch(`/wineries`)
+    .then(r => r.json())
+    .then(data => {
+      console.log(data)
+      setWineries(data)})
+  }, [])
 
 
   const onAddComment = (comment) => {
