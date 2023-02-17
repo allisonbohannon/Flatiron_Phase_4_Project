@@ -14,9 +14,6 @@ const NavigationBar = () =>  {
               setCurrentUser(null);
             }
           });
-
-
-        setCurrentUser(null)
     }
 
     return (
