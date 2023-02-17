@@ -3,6 +3,8 @@ import styled, { css } from "styled-components";
 export const CardContainer = styled.div`
   width: 100vw;
   display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -19,8 +21,8 @@ export const Card = styled.div`
   width: 24em;
   height: 40em;
   font-family: Quicksand, arial, sans-serif;
-  border: 1px solid gray;
-  box-shadow: 5px 10px #888888
+  border: 1px ;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 `;
 
@@ -34,8 +36,8 @@ export const DetailCard = styled.div`
   width: 40em;
   height: 80em;
   font-family: Quicksand, arial, sans-serif;
-  border: 1px solid gray;
-  box-shadow: 5px 10px #888888
+  border: 1px ;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 `;
 

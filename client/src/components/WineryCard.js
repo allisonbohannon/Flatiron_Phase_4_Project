@@ -9,9 +9,9 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
 
     const currentUser = useContext(UserContext)
   
-    const {id, name, img, appellation, comments, visits, avgRating } = winery
+    const {id, name, about, tastingcost, rezrequired, imagesrc, address, city } = winery
     
-    const userVisit = visits.find(visit => visit.userId === currentUser)
+    // const userVisit = visits.find(visit => visit.userId === currentUser)
 
     const handleAddRating = () => {
         const newVisitObj = {
@@ -22,26 +22,26 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
         onAddRating(newVisitObj)
     }
 
-    const handleChangeRating = (rating) => {
-        const updatedVisitObj = {
-            id: userVisit.id,
-            userId: currentUser,
-            wineryId: winery.id,
-            rating: rating
-        }
+    // const handleChangeRating = (rating) => {
+    //     const updatedVisitObj = {
+    //         id: userVisit.id,
+    //         userId: currentUser,
+    //         wineryId: winery.id,
+    //         rating: rating
+    //     }
 
-        onChangeRating(updatedVisitObj)
+    //     onChangeRating(updatedVisitObj)
 
-    }
+    // }
     
-    const displayAvgRating = () =>  <StarRatingShow rating={avgRating}/>
-    const displayUserRating = () => <div>Your Rating: <StarRatingEdit userRating={userVisit.rating} onChange={handleChangeRating} /></div> 
+    // const displayAvgRating = () =>  <StarRatingShow rating={avgRating}/>
+    // const displayUserRating = () => <div>Your Rating: <StarRatingEdit userRating={userVisit.rating} onChange={handleChangeRating} /></div> 
  
 
   return (
     <Card>
         <CardHeader>
-            <img src={img} style={{ width:'23em'} }/>
+            <img src={imagesrc} style={{ width:'23em'} }/>
         </CardHeader>
         <Link to={`/wineries/${id}`} style={{display: 'inline-block',
                                     fontSize: '1.2em',
@@ -54,15 +54,15 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
                                     transition: 'color 0.25s ease-in',
                                     '&':'hover {color: #777;}'}}>
                 {name}</Link>
-        <CardHeading style={{'font-size':'1.1em', color:'rgb(150,78,108)' }}>{appellation}</CardHeading>
+        <CardHeading style={{'font-size':'1.1em', color:'rgb(150,78,108)' }}>{city}</CardHeading>
         <CardBody>
-            <p>Visits: {visits.length}</p>
+            <p>{about}</p>
         </CardBody>
-            <span>
+            {/* <span>
                 <p>Avg Rating: {displayAvgRating()}  </p>
             {userVisit? "" : <Button  onClick={handleAddRating}>Add Rating</Button>}
             </span>
-            <p>{userVisit? displayUserRating() : '' }</p> 
+            <p>{userVisit? displayUserRating() : '' }</p>  */}
            
              <CardButton ><Link to={`/wineries/${id}/comments/new`} style={{color:'white', textDecoration:'none'}} >Add Comment</Link></CardButton>
     </Card>
