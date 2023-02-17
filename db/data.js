@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-winery_data = [
+[
     {
         "name": "Freemark Abbey Winery",
         "about": "TIMELESS. TRUSTED. CELEBRATED.\nSavor classic Napa Valley Cabernets. Gather over innovative culinary delights. See how Freemark Abbey is 130 years strong….and Flourishing!",
@@ -194,6 +187,15 @@ winery_data = [
         "imagesrc": "//winecountry-media.s3.amazonaws.com/23658-media-CarnardVineyard-FeatImage-800x800.jpg.300x300.jpg",
         "address": "1016 Dunaweal Lane, Calistoga CA 94515",
         "city": "Calistoga"
+    },
+    {
+        "name": "Trinchero Napa Valley",
+        "about": "One of Napa Valley's stand out tasting rooms located just north of St. Helena. Enjoy our delicious limited-production, estate-grown wines, and beautiful scenery.",
+        "tastingcost": 35,
+        "rezrequired": "Popular Wineries",
+        "imagesrc": "
+        "address": "3070 St. Helena Hwy, St. Helena CA 94574",
+        "city": "St. Helena"
     },
     {
         "name": "Jessup Cellars",
@@ -763,24 +765,3 @@ winery_data = [
         "city": "Rutherford"
     }
 ]
-
-
-
-puts 'Seeding users...'
-
-
-10.times do 
-    User.create(
-        username: Faker::Name.unique.first_name,
-        password_digest: BCrypt::Password.create('password'),
-        bio: Faker::Quote.jack_handey
-    )
-end
-
-
-winery_data.each do |winery| 
-    Winery.create(winery)
-end
-
-
-puts "Done seeding!"
