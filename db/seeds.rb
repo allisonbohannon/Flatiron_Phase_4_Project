@@ -8,10 +8,11 @@
 
 puts 'Seeding users...'
 
+
 10.times do 
     User.create(
         username: Faker::Name.unique.first_name,
-        password_digest: Faker::Name.last_name,
+        password_digest: BCrypt::Password.create('password'),
         bio: Faker::Quote.jack_handey
     )
 end
