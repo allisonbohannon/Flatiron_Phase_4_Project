@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Route, Routes } from "react-router-dom";
-import { UserProvider } from "../context/User";
 import NavigationBar from "./NavigationBar";
 import Home from "../pages/Home";
 import Wineries from "../pages/Wineries";
@@ -13,21 +12,23 @@ import {averageRating} from "../functions/AverageRating";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import { wineryTest, userTest } from "../testdata";
+import { UserContext } from "../context/User";
 
 function App() {
   const [wineries, setWineries] = useState(wineryTest)
   const [users, setUsers] = useState(userTest)
+  const { currentUser, setCurrentUser} = useContext(UserContext)
 
   //useEffect to fetch initial state
 
-  // useEffect(() => {
-  //   // auto-login
-  //   fetch("/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setCurrentUser(user));
+      }
+    });
+  }, []);
 
 
   useEffect(() => {
@@ -104,7 +105,7 @@ function App() {
   //if (!currentUser) return <Login onLogin={setCurrentUser} />; 
 
   return (
-    <UserProvider>
+    <div>
             <NavigationBar />
             <br></br>
             <Routes>
@@ -146,7 +147,7 @@ function App() {
                 <Route path="/" element={<Home
                 />} />
             </Routes>
-        </UserProvider>
+        </div>
   );
 }
 
