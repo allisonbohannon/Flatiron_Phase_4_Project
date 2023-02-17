@@ -9,11 +9,11 @@ const NavigationBar = () =>  {
 
     const handleLogout = () =>{
 
-        // fetch("/logout", { method: "DELETE" }).then((r) => {
-        //     if (r.ok) {
-        //       setCurrentUser(null);
-        //     }
-        //   });
+        fetch("/logout", { method: "DELETE" }).then((r) => {
+            if (r.ok) {
+              setCurrentUser(null);
+            }
+          });
 
 
         setCurrentUser(null)
@@ -48,7 +48,7 @@ const NavigationBar = () =>  {
             </NavLinkStyle>
             <NavLinkStyle>Maps</NavLinkStyle>
 
-            <p>{currentUser? `Cheers, ${currentUser}!` : ""}</p>
+            <p>{currentUser? `Cheers, ${currentUser.username}!` : ""}</p>
             <div>{currentUser?  (
                     <button onClick={handleLogout}>Logout</button>) : (
                     <NavLink to="/Login"><Button>Log In</Button></NavLink>)}
