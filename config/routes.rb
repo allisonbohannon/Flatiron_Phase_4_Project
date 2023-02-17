@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :comments
+  resources :visits
   resources :wineries, only: [:index, :show]
   resources :users, only: [:index]
 
