@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
 export const CardContainer = styled.div`
+  position: relative;
+  top: 5em; 
   width: 100vw;
   display: flex;
   flex-direction: row; 

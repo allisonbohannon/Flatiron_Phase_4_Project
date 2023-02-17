@@ -10,7 +10,7 @@ const NavLinkStyle = styled.div`
     margin: 0px 10px;
     }
     a: {color: rbg(100,100,100)}
-    a:link { color: blue; text-decoration: none;  }
+    a:link { rbg(100,100,100); text-decoration: none;  }
     a:active {color: rgb(208,161,90)}
 `
 export default NavLinkStyle

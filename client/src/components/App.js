@@ -34,9 +34,7 @@ function App() {
   useEffect(() => {
     fetch(`/wineries`)
     .then(r => r.json())
-    .then(data => {
-      console.log(data)
-      setWineries(data)})
+    .then(data => setWineries(data))
   }, [])
 
 

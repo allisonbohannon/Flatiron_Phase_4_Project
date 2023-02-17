@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 const NavBar = styled.nav`
-    position: static; 
+    position: fixed; 
     top: 0; 
     right: 0; 
     height: 10vh; 
