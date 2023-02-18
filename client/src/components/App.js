@@ -10,6 +10,7 @@ import ShowCommentForm from "../pages/ShowCommentForm";
 import AddCommentForm from "../pages/AddCommentForm";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import Maps from "../pages/Maps";
 import { visitsTest, commentsTest} from "../testdata";
 import { UserContext } from "../context/User";
 
@@ -157,7 +158,6 @@ function App() {
                   wineries={wineries}
                   visits={visits}
                   comments={comments}
-
                 />} />
                 <Route path="/users/:id" element={<Users
                   users={users}
@@ -169,8 +169,11 @@ function App() {
                 <Route path="/signup" element={<SignUp
                   onSignup={onSignup}
                 />} />
+                 <Route path="/maps" element={<Maps 
+                 />} />
                 <Route path="/" element={<Home
                 />} />
+               
             </Routes>
         </div>
   );

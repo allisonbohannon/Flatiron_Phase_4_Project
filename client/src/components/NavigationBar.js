@@ -45,11 +45,19 @@ const NavigationBar = () =>  {
                     Users
                 </NavLink>
             </NavLinkStyle>
-            <NavLinkStyle>Maps</NavLinkStyle>
+            <NavLinkStyle>
+                <NavLink 
+                     to='/maps'
+                     exact
+                     style={{color: '#ffffff'}}
+                    >
+                     Maps
+                </NavLink>
+            </NavLinkStyle>
 
-            <p>{currentUser? `Cheers, ${currentUser.username}!` : ""}</p>
+            <p style={{color: '#ffffff'}}>{currentUser? `Cheers, ${currentUser.username}!` : ""}</p>
             <div>{currentUser?  (
-                    <button onClick={handleLogout}>Logout</button>) : (
+                    <Button onClick={handleLogout}>Logout</Button>) : (
                     <NavLink to="/Login"><Button>Log In</Button></NavLink>)}
             </div> 
         </NavBar>
