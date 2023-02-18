@@ -1,6 +1,6 @@
 class WineriesController < ApplicationController
-    skip_before_action :authorize, only: :index
-    skip_before_action :authorize, only: :show
+   # skip_before_action :authorize, only: :index
+   # skip_before_action :authorize, only: :show
 
     def index 
         render json: Winery.all 

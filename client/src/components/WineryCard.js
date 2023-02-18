@@ -5,13 +5,17 @@ import StarRatingShow from './StarRatingShow';
 import StarRatingEdit from './StarRatingEdit';
 import { UserContext } from '../context/User';
 
-const WineryCard = ({winery, onChangeRating, onAddRating}) => { 
+const WineryCard = ({winery, visits, onChangeRating, onAddRating}) => { 
 
-    const currentUser = useContext(UserContext)
+    const {currentUser} = useContext(UserContext)
+
   
-    const {id, name, about, tastingcost, rezrequired, imagesrc, address, city } = winery
+    const {id, name, about, tastingcost, rezrequired, imagesrc, address, city, avgRating } = winery
     
-    // const userVisit = visits.find(visit => visit.userId === currentUser)
+    const wineryVisits = visits.filter(visit => visit.wineryId === winery.id) 
+ 
+    const userVisit = wineryVisits.find(visit => visit.userId === currentUser.id)
+
 
     const handleAddRating = () => {
         const newVisitObj = {
@@ -22,20 +26,22 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
         onAddRating(newVisitObj)
     }
 
-    // const handleChangeRating = (rating) => {
-    //     const updatedVisitObj = {
-    //         id: userVisit.id,
-    //         userId: currentUser,
-    //         wineryId: winery.id,
-    //         rating: rating
-    //     }
+    const handleChangeRating = (rating) => {
+        const updatedVisitObj = {
+            id: userVisit.id,
+            userId: currentUser,
+            wineryId: winery.id,
+            rating: rating
+        }
 
-    //     onChangeRating(updatedVisitObj)
+        onChangeRating(updatedVisitObj)
 
-    // }
+    }
     
-    // const displayAvgRating = () =>  <StarRatingShow rating={avgRating}/>
-    // const displayUserRating = () => <div>Your Rating: <StarRatingEdit userRating={userVisit.rating} onChange={handleChangeRating} /></div> 
+    const displayAvgRating = () =>  <StarRatingShow rating={avgRating}/>
+    const displayUserRating = () => <div>Your Rating: <StarRatingEdit userRating={userVisit.rating} onChange={handleChangeRating} /></div> 
+
+
  
 
   return (
@@ -58,11 +64,8 @@ const WineryCard = ({winery, onChangeRating, onAddRating}) => {
         <CardBody>
             <p>{about}</p>
         </CardBody>
-            {/* <span>
-                <p>{displayAvgRating()}  </p>
-            {userVisit? "" : <Button  onClick={handleAddRating}>Add Rating</Button>}
-            </span>
-            <p>{userVisit? displayUserRating() : '' }</p>  */}
+           <p>{displayAvgRating()} ({wineryVisits.length}) </p>
+           <div>{userVisit? displayUserRating()  : <Button  onClick={handleAddRating}>Add Rating</Button>}</div>
            
              <CardButton ><Link to={`/wineries/${id}/comments/new`} style={{color:'white', textDecoration:'none'}} >Add Comment</Link></CardButton>
     </Card>

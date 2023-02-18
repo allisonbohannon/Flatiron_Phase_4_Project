@@ -8,15 +8,18 @@ import WineryDetail from "../pages/WineryDetail";
 import EditCommentForm from "../pages/EditCommentForm";
 import ShowCommentForm from "../pages/ShowCommentForm";
 import AddCommentForm from "../pages/AddCommentForm";
-import {averageRating} from "../functions/AverageRating";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
-import { wineryTest, userTest } from "../testdata";
+import { visitsTest, commentsTest} from "../testdata";
 import { UserContext } from "../context/User";
 
 function App() {
-  const [wineries, setWineries] = useState(wineryTest)
-  const [users, setUsers] = useState(userTest)
+  const [wineries, setWineries] = useState([])
+  const [users, setUsers] = useState([])
+  const [visits, setVisits] = useState([])
+  const [comments, setComments] = useState([])
+
+
   const { currentUser, setCurrentUser} = useContext(UserContext)
 
   //useEffect to fetch initial state
@@ -35,8 +38,17 @@ function App() {
     fetch(`/wineries`)
     .then(r => r.json())
     .then(data => setWineries(data))
+
+    fetch(`/users`)
+    .then(r => r.json())
+    .then(data => setUsers(data))
+
+    setComments(commentsTest)
+    setVisits(visitsTest)
   }, [])
 
+  const testUser = users[5]
+  setCurrentUser(testUser)
 
   const onAddComment = (comment) => {
     console.log(comment)
@@ -113,16 +125,21 @@ function App() {
             
                 <Route path="/wineries" element={<Wineries
                   wineries={wineries}
+                  visits={visits}
+                  comments={comments}
                   onChangeRating={onChangeRating}
                   onAddRating={onAddRating}
                 />}/> 
                 <Route path='/wineries/:wineryId' element={<WineryDetail
                   wineries={wineries}
+                  visits={visits}
+                  comments={comments}
                   onChangeRating={onChangeRating}
                   onAddRating={onAddRating}
                 />}/>
                  <Route path='/wineries/:wineryId/comments/:commentId/edit' element={<EditCommentForm
                   wineries={wineries}
+                  comments={comments}
                   onCommentEdit={onCommentEdit}
                 />}/>
                  <Route path='/wineries/:wineryId/comments/new' element={<AddCommentForm
@@ -132,13 +149,20 @@ function App() {
                 />}/>
                  <Route path='/wineries/:wineryId/comments/:commentId' element={<ShowCommentForm
                   wineries={wineries}
+                  visits={visits}
+                  comments={comments}
                 />}/>
                 <Route path="/users" element={<Users
                   users={users}
                   wineries={wineries}
+                  visits={visits}
+                  comments={comments}
+
                 />} />
                 <Route path="/users/:id" element={<Users
                   users={users}
+                  visits={visits}
+                  comments={comments}
                 />} />
                 <Route path="/login" element={<Login
                 />} />

@@ -45,12 +45,13 @@ export const DetailCard = styled.div`
 
 export const CardHeader = styled.header`
   display: flex; 
-  justify-contents: 
+  justify-contents: center; 
   padding-top: 8px;
   padding-bottom: 8px;
 `;
 
 export const CardHeading = styled.h1`
+  justify-self:center
   font-size: 24px;
   font-weight: bold;
   text-align: center;
