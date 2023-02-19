@@ -121,9 +121,7 @@ function App() {
   return (
     <div>
             <NavigationBar />
-            <br></br>
             <Routes>
-            
                 <Route path="/wineries" element={<Wineries
                   wineries={wineries}
                   visits={visits}
@@ -131,24 +129,24 @@ function App() {
                   onChangeRating={onChangeRating}
                   onAddRating={onAddRating}
                 />}/> 
-                <Route path='/wineries/:wineryId' element={<WineryDetail
+                <Route path="/wineries/:wineryId" element={<WineryDetail
                   wineries={wineries}
                   visits={visits}
                   comments={comments}
                   onChangeRating={onChangeRating}
                   onAddRating={onAddRating}
                 />}/>
-                 <Route path='/wineries/:wineryId/comments/:commentId/edit' element={<EditCommentForm
+                 <Route path="/wineries/:wineryId/comments/:commentId/edit" element={<EditCommentForm
                   wineries={wineries}
                   comments={comments}
                   onCommentEdit={onCommentEdit}
                 />}/>
-                 <Route path='/wineries/:wineryId/comments/new' element={<AddCommentForm
+                 <Route path="/wineries/:wineryId/comments/new" element={<AddCommentForm
                   wineries={wineries}
                   users={users}
                   onAddComment={onAddComment}
                 />}/>
-                 <Route path='/wineries/:wineryId/comments/:commentId' element={<ShowCommentForm
+                 <Route path="/wineries/:wineryId/comments/:commentId" element={<ShowCommentForm
                   wineries={wineries}
                   visits={visits}
                   comments={comments}

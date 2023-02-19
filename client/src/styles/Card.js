@@ -19,10 +19,10 @@ export const Card = styled.div`
   justify-content: center;
   overflow: hidden;
   padding: 1em;
-  margin: 2em;
-  width: 24em;
+  margin: 1em;
+  width: 20em;
   height: 48em;
-  font-family: Quicksand, arial, sans-serif;
+  font-family: Verdana, sans-serif;
   border: 1px ;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -46,20 +46,19 @@ export const DetailCard = styled.div`
 export const CardHeader = styled.header`
   display: flex; 
   justify-contents: center; 
-  padding-top: 8px;
-  padding-bottom: 8px;
 `;
 
 export const CardHeading = styled.h1`
   justify-self:center
   font-size: 24px;
-  font-weight: bold;
   text-align: center;
+  padding:0; 
 `;
 
 export const CardBody = styled.div`
   padding-right: 8px;
   padding-left: 8px;
+  overflow: none; 
 `;
 
 export const CardImage = styled.image`
@@ -179,7 +178,7 @@ export const CardButton = styled.button`
   font-size: 1rem;
   font-weight: 700;
   color: #fff;
-  background-color: rgb(101,62,82);
+  background-color:#723d46;
   border: 0;
   box-shadow: none;
   border-radius: 6px;

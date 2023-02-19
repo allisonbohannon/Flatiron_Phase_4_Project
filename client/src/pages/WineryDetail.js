@@ -8,19 +8,22 @@ import StarRatingEdit from '../components/StarRatingEdit';
 import { UserContext } from '../context/User';
 
 
-const WineryDetail = ({wineries, onChangeRating, onAddRating}) => {
+const WineryDetail = ({wineries, visits, comments, onChangeRating, onAddRating}) => {
 
   const { wineryId } = useParams()
   const {currentUser} = useContext(UserContext)
   const navigate = useNavigate()
 
   const displayWinery = wineries.find(winery => winery.id === parseInt(wineryId))
+  console.log(displayWinery)
 
-  const displayComments = displayWinery.comments.map(comment => {
+  const relatedComments = comments.filter(comment => comment.wineryId === displayWinery.id)
+
+  const displayComments = relatedComments.map(comment => {
     return <CommentCard key={comment.id} comment={comment} winery={displayWinery} /> 
   })
 
-  const userVisit = displayWinery.visits.find(visit => visit.userId === currentUser)
+  const userVisit = visits.find(visit => visit.userId === currentUser)
 
   const handleClick = () => {
     navigate(-1)

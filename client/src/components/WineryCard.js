@@ -47,7 +47,7 @@ const WineryCard = ({winery, visits, onChangeRating, onAddRating}) => {
   return (
     <Card>
         <CardHeader>
-            <img src={imagesrc} style={{ width:'24em', border:'1px solid gray'} }/>
+            <img src={imagesrc} style={{ width:'20em', border:'1px solid gray'} }/>
         </CardHeader>
         <Link to={`/wineries/${id}`} style={{display: 'inline-block',
                                     fontSize: '1.2em',
@@ -60,14 +60,18 @@ const WineryCard = ({winery, visits, onChangeRating, onAddRating}) => {
                                     transition: 'color 0.25s ease-in',
                                     '&':'hover {color: #777;}'}}>
                 {name}</Link>
-        <CardHeading style={{'font-size':'1.1em', color:'#aaa' }}>{city}</CardHeading>
+        <CardHeading style={{margin:0}}>
+            <p style={{fontSize:'.6em', fontWeight:'normal', color:'#aaa', margin:0, padding:0 }}>{city}</p>
+            <p style={{fontSize:".4em", fontFamily:"cursive", padding:0}}> Tastings From ${tastingcost}</p>
+            </CardHeading>
         <CardBody>
-            <p>{about}</p>
+            <p style={{overflow:'none'}}>{about}</p>
+            <p style={{fontSize:".8em", fontStyle:"italic"}}>Reservation Policy: {rezrequired}</p>
+            <p>{displayAvgRating()} ({wineryVisits.length}) </p>
+            <div>{userVisit? displayUserRating()  : <Button  onClick={handleAddRating}>Add Rating</Button>}</div>
+            <CardButton ><Link to={`/wineries/${id}/comments/new`} style={{color:'white', textDecoration:'none'}} >Add Comment</Link></CardButton>
         </CardBody>
-           <p>{displayAvgRating()} ({wineryVisits.length}) </p>
-           <div>{userVisit? displayUserRating()  : <Button  onClick={handleAddRating}>Add Rating</Button>}</div>
-           
-             <CardButton ><Link to={`/wineries/${id}/comments/new`} style={{color:'white', textDecoration:'none'}} >Add Comment</Link></CardButton>
+          
     </Card>
   )
 }
