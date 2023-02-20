@@ -6,6 +6,8 @@ import { Button, Card } from '../styles';
 
 const CommentCard = ({comment, winery}) => {
 
+  console.log(comment)
+
     const currentUser = useContext(UserContext)
 
     const checkIfCurrentUser = currentUser.currentUser === comment.userId ? true : false 

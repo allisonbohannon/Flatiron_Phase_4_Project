@@ -29,13 +29,13 @@ export const Card = styled.div`
 `;
 
 export const DetailCard = styled.div`
-  display: inline-grid;
+  display: block:;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   padding: 1em;
-  margin: 2em;
-  width: 40em;
+  width: 80%%;
+  margin: auto; 
   height: 80em;
   font-family: Quicksand, arial, sans-serif;
   border: 1px ;
@@ -51,6 +51,7 @@ export const CardHeader = styled.header`
 export const CardHeading = styled.h1`
   justify-self:center
   font-size: 24px;
+  font-weight: 400; 
   text-align: center;
   padding:0; 
 `;

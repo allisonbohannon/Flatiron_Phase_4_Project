@@ -15,7 +15,7 @@ const WineryDetail = ({wineries, visits, comments, onChangeRating, onAddRating})
   const navigate = useNavigate()
 
   const displayWinery = wineries.find(winery => winery.id === parseInt(wineryId))
-  console.log(displayWinery)
+
 
   const relatedComments = comments.filter(comment => comment.wineryId === displayWinery.id)
 
@@ -55,27 +55,30 @@ const WineryDetail = ({wineries, visits, comments, onChangeRating, onAddRating})
   
 
   return (
-    <div>
+    <Container>
       <Button onClick={handleClick}>Back to Wineries</Button>
-      <br></br>
-      <Container>
         <DetailCard >
-        <CardHeader>
-            <img src={displayWinery.img} style={{ width:'38em'} }/>
+        <CardHeader style={{justifyContent:"space-around"}}>
+            <img src={displayWinery.imagesrc} style={{ width:"40%" }}/>
+            <div style={{width: "40%"}}>
+              <CardHeading style={{'font-size':'2em', color:'#aaa', borderBottom: '1px solid #ddd', padding:'1em', }}>{displayWinery.name}</CardHeading>
+              <CardHeading style={{'font-size':'1.1em', color:'rgb(150,78,108)' }}>{displayWinery.city}</CardHeading>
+              <p style={{color:"#aaa", textAlign:"center", margin:"0px"}}>{displayWinery.address}</p>
+              <p style={{color:"#aaa", textAlign:"center", margin:"0px"}}>{displayWinery.address}</p>
+              <p style={{fontSize:".8em", textAlign:"center", fontFamily:"cursive", padding:"1em"}}> Tastings From ${displayWinery.tastingcost}</p>
+              <p style={{overflow:'none'}}>{displayWinery.about}</p>
+              <p style={{fontSize:".8em", fontStyle:"italic"}}>Reservation Policy: {displayWinery.rezrequired}</p>
+              <p>Avg Rating: {displayAvgRating()}  </p>
+                {userVisit? "" : <Button  onClick={handleAddRating}>Add Rating</Button>}
+              <p>{userVisit? displayUserRating() : '' }</p> 
+            </div>
         </CardHeader>
-          <CardHeading style={{'font-size':'2em', color:'#aaa', borderBottom: '1px solid #ddd', padding:'1em', }}>{displayWinery.name}</CardHeading>
-          <CardHeading style={{'font-size':'1.1em', color:'rgb(150,78,108)' }}>{displayWinery.appellation}</CardHeading>
-          <CardBody>
-            <p>Avg Rating: {displayAvgRating()}  </p>
-            {userVisit? "" : <Button  onClick={handleAddRating}>Add Rating</Button>}
-            <p>{userVisit? displayUserRating() : '' }</p> 
+          <CardBody style={{margin:"1em", padding:"3px"}}>
+            <CardScroller>Comments: {displayComments}</CardScroller>
           </CardBody>
-          <CardScroller>Comments: {displayComments}</CardScroller>
           <CardButton ><Link to={`/wineries/${displayWinery.id}/comments/new`} style={{color:'white', textDecoration:'none'}} >Add Comment</Link></CardButton>
         </DetailCard>
-      </Container>
-
-    </div>
+    </Container>
   )
 }
 
