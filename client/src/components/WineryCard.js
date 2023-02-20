@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Button, Card, CardHeader, CardHeading, CardBody, CardLink, CardButton } from '../styles';
+import { Button, Card, CardHeader, CardHeading, CardBody, CardButton } from '../styles';
 import { Link } from 'react-router-dom';
 import StarRatingShow from './StarRatingShow';
 import StarRatingEdit from './StarRatingEdit';
@@ -10,7 +10,7 @@ const WineryCard = ({winery, visits, onChangeRating, onAddRating}) => {
     const {currentUser} = useContext(UserContext)
 
   
-    const {id, name, about, tastingcost, rezrequired, imagesrc, address, city, avgRating } = winery
+    const {id, name, about, tastingcost, rezrequired, imagesrc, city, avgRating } = winery
     
     const wineryVisits = visits.filter(visit => visit.wineryId === winery.id) 
  

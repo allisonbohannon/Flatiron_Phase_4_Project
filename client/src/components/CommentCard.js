@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/User';
-import { Button, Card } from '../styles';
+import { Button } from '../styles';
 
 
 const CommentCard = ({comment, winery}) => {

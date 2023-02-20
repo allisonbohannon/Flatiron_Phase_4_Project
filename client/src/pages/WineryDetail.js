@@ -59,7 +59,7 @@ const WineryDetail = ({wineries, visits, comments, onChangeRating, onAddRating})
       <Button onClick={handleClick}>Back to Wineries</Button>
         <DetailCard >
         <CardHeader style={{justifyContent:"space-around"}}>
-            <img src={displayWinery.imagesrc} style={{ width:"40%" }}/>
+            <img src={displayWinery.imagesrc} style={{ width:"40%" }} alt="winery photo" />
             <div style={{width: "40%"}}>
               <CardHeading style={{'font-size':'2em', color:'#aaa', borderBottom: '1px solid #ddd', padding:'1em', }}>{displayWinery.name}</CardHeading>
               <CardHeading style={{'font-size':'1.1em', color:'rgb(150,78,108)' }}>{displayWinery.city}</CardHeading>

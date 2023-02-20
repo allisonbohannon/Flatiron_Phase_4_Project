@@ -1,13 +1,9 @@
-import React from 'react'; 
-import { useContext } from 'react';
-import { UserContext } from '../context/User';
+import React from 'react';  
 import { Card, CardBody, CardHeader, CardHeading, CardScroller } from '../styles';
 import StarRatingShow from './StarRatingShow';
-import WineryCard from './WineryCard';
 
-const UserCard = ({user, wineries, visits, comments}) => {    
 
-    const {currentUser} = useContext(UserContext)
+const UserCard = ({user, wineries, visits}) => {    
 
     const userVisits = visits.filter(visit => visit.userId === user.id)
  

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { UserContext } from '../context/User';
-import { Container, FormField, Button, CardHeading, Label, Input } from '../styles';
+import { Container, FormField, Button, CardHeading} from '../styles';
 
 const AddCommentForm = ({wineries, onAddComment, users}) => {
 
