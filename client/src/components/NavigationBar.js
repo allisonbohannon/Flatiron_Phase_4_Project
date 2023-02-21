@@ -1,11 +1,23 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { NavLink } from "react-router-dom";
 import { NavBar, Button, NavLinkStyle } from "../styles";
 import { UserContext } from '../context/User';
 
-const NavigationBar = () =>  {
+const NavigationBar = ({users}) =>  {
 
     const { currentUser, setCurrentUser } = useContext(UserContext)
+    const testUser = users[5]
+    setCurrentUser(testUser)
+
+    useEffect(() => {
+        // auto-login
+        fetch("/me").then((r) => {
+          if (r.ok) {
+            r.json().then((user) => setCurrentUser(user));
+          }
+        });
+      }, []);
+    
 
     const handleLogout = () =>{
 
@@ -21,16 +33,15 @@ const NavigationBar = () =>  {
             <NavLinkStyle>
                 <NavLink
                     to="/"
-                    exact
-                    style={{font:'Arial', 'font-size':'2em', color:'#aaa'}}
+                    exact="true"
+                    style={{font:'Arial', fontSize:'2em', color:'#aaa'}}
                     >
-                    WineFriends
+                    VinPals
                 </NavLink>
             </NavLinkStyle>
             <NavLinkStyle>
                 <NavLink
                     to="/wineries"
-                    exact
                     style={{color: '#ffffff'}}
                     >
                     Wineries
@@ -39,7 +50,6 @@ const NavigationBar = () =>  {
             <NavLinkStyle>
                 <NavLink
                     to='/users'
-                    exact
                     style={{color: '#ffffff'}}
                     >
                     Users
@@ -48,7 +58,6 @@ const NavigationBar = () =>  {
             <NavLinkStyle>
                 <NavLink 
                      to='/maps'
-                     exact
                      style={{color: '#ffffff'}}
                     >
                      Maps

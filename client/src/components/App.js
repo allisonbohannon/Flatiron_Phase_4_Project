@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import NavigationBar from "./NavigationBar";
 import Home from "../pages/Home";
@@ -12,7 +12,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Maps from "../pages/Maps";
 import { visitsTest, commentsTest} from "../testdata";
-import { UserContext } from "../context/User";
+import { UserProvider } from "../context/User";
 
 function App() {
   const [wineries, setWineries] = useState([])
@@ -21,18 +21,8 @@ function App() {
   const [comments, setComments] = useState([])
 
 
-  const { currentUser, setCurrentUser} = useContext(UserContext)
-
   //useEffect to fetch initial state
 
-  useEffect(() => {
-    // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setCurrentUser(user));
-      }
-    });
-  }, []);
 
 
   useEffect(() => {
@@ -48,8 +38,7 @@ function App() {
     setVisits(visitsTest)
   }, [])
 
-  const testUser = users[5]
-  setCurrentUser(testUser)
+
 
   const onAddComment = (comment) => {
     console.log(comment)
@@ -119,8 +108,8 @@ function App() {
   //if (!currentUser) return <Login onLogin={setCurrentUser} />; 
 
   return (
-    <div>
-            <NavigationBar />
+    <UserProvider>
+            <NavigationBar users={users} />
             <Routes>
                 <Route path="/wineries" element={<Wineries
                   wineries={wineries}
@@ -132,6 +121,7 @@ function App() {
                 <Route path="/wineries/:wineryId" element={<WineryDetail
                   wineries={wineries}
                   visits={visits}
+                  users={users}
                   comments={comments}
                   onChangeRating={onChangeRating}
                   onAddRating={onAddRating}
@@ -173,7 +163,7 @@ function App() {
                 />} />
                
             </Routes>
-        </div>
+        </UserProvider>
   );
 }
 
