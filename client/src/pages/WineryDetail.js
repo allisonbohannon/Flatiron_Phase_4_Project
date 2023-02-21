@@ -8,19 +8,24 @@ import StarRatingEdit from '../components/StarRatingEdit';
 import { UserContext } from '../context/User';
 
 
-const WineryDetail = ({wineries, visits, comments, onChangeRating, onAddRating}) => {
+const WineryDetail = ({wineries, visits, comments, users, onChangeRating, onAddRating}) => {
 
   const { wineryId } = useParams()
   const {currentUser} = useContext(UserContext)
   const navigate = useNavigate()
 
   const displayWinery = wineries.find(winery => winery.id === parseInt(wineryId))
+  console.log(displayWinery)
 
 
   const relatedComments = comments.filter(comment => comment.wineryId === displayWinery.id)
+  console.log(comments)
 
   const displayComments = relatedComments.map(comment => {
-    return <CommentCard key={comment.id} comment={comment} winery={displayWinery} /> 
+    console.log(comment)
+    return (<li key={comment.id} style={{listStyle:"none"}}>
+        <CommentCard  comment={comment} users={users} wineries={wineries} /> 
+      </li>)
   })
 
   const userVisit = visits.find(visit => visit.userId === currentUser)
@@ -61,8 +66,8 @@ const WineryDetail = ({wineries, visits, comments, onChangeRating, onAddRating})
         <CardHeader style={{justifyContent:"space-around"}}>
             <img src={displayWinery.imagesrc} style={{ width:"40%" }} alt="winery photo" />
             <div style={{width: "40%"}}>
-              <CardHeading style={{'font-size':'2em', color:'#aaa', borderBottom: '1px solid #ddd', padding:'1em', }}>{displayWinery.name}</CardHeading>
-              <CardHeading style={{'font-size':'1.1em', color:'rgb(150,78,108)' }}>{displayWinery.city}</CardHeading>
+              <CardHeading style={{fontSize:'2em', color:'#aaa', borderBottom: '1px solid #ddd', padding:'1em', }}>{displayWinery.name}</CardHeading>
+              <CardHeading style={{fontSize:'1.1em', color:'rgb(150,78,108)' }}>{displayWinery.city}</CardHeading>
               <p style={{color:"#aaa", textAlign:"center", margin:"0px"}}>{displayWinery.address}</p>
               <p style={{color:"#aaa", textAlign:"center", margin:"0px"}}>{displayWinery.address}</p>
               <p style={{fontSize:".8em", textAlign:"center", fontFamily:"cursive", padding:"1em"}}> Tastings From ${displayWinery.tastingcost}</p>
@@ -74,7 +79,7 @@ const WineryDetail = ({wineries, visits, comments, onChangeRating, onAddRating})
             </div>
         </CardHeader>
           <CardBody style={{margin:"1em", padding:"3px"}}>
-            <CardScroller>Comments: {displayComments}</CardScroller>
+              Comments:{displayComments}
           </CardBody>
           <CardButton ><Link to={`/wineries/${displayWinery.id}/comments/new`} style={{color:'white', textDecoration:'none'}} >Add Comment</Link></CardButton>
         </DetailCard>

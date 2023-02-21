@@ -20,7 +20,7 @@ const generateComments = () => {
       id: i, 
       userId: 337+ Math.floor(Math.random()*10 + 1),
       wineryId: 254+ Math.floor(Math.random()*7 + 1),
-      comment: "blah blah blah tannins"
+      text: "blah blah blah tannins"
     }
     commentsTest.push(comment)
   }
